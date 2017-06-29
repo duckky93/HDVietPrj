@@ -1,22 +1,21 @@
-package com.example.kyler.hdviet
+package com.example.kyler.hdviet.Activities
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
-import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.Menu
 import com.example.kyler.hdviet.Fragment.BaseFragment
 import com.example.kyler.hdviet.Fragment.SeriesFragment
 import com.example.kyler.hdviet.Fragment.MoviesFragment
 import com.example.kyler.hdviet.Fragment.PopularsFragment
+import com.example.kyler.hdviet.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_content_main.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(){
 
     override fun getResLayout(): Int {
         return R.layout.activity_main
@@ -53,12 +52,6 @@ class MainActivity : BaseActivity() {
                 mDrawer.openDrawer(Gravity.START)
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater;
-        inflater.inflate(R.menu.menu_option,menu)
-        return true
     }
 
     class MainViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
