@@ -5,10 +5,9 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.view.Gravity
-import android.view.Menu
 import com.example.kyler.hdviet.Fragment.BaseFragment
 import com.example.kyler.hdviet.Fragment.SeriesFragment
-import com.example.kyler.hdviet.Fragment.MoviesFragment
+import com.example.kyler.hdviet.Fragment.Movies.MoviesFragment
 import com.example.kyler.hdviet.Fragment.PopularsFragment
 import com.example.kyler.hdviet.R
 import kotlinx.android.synthetic.main.activity_main.*

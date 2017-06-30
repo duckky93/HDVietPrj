@@ -1,7 +1,6 @@
-package com.example.kyler.hdviet.Fragment
+package com.example.kyler.hdviet.Fragment.Movies
 
-import android.speech.tts.TextToSpeech
-import android.util.Log
+import com.example.kyler.hdviet.Fragment.BaseFragment
 import com.example.kyler.hdviet.R
 
 /**
