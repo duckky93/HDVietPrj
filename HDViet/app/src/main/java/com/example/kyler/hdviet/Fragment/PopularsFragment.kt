@@ -1,5 +1,6 @@
 package com.example.kyler.hdviet.Fragment
 
+import android.view.View
 import com.example.kyler.hdviet.R
 
 /**
@@ -11,8 +12,8 @@ class PopularsFragment : BaseFragment() {
         return R.layout.fragment_populars
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(view: View) {
+        super.initView(view)
 
     }
 

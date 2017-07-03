@@ -14,11 +14,11 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun getResLayout() : Int
 
-    open fun initView(){}
+    open fun initView(view: View){}
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(getResLayout(), container, false)
-        initView()
+        initView(view!!)
         return view
     }
 }

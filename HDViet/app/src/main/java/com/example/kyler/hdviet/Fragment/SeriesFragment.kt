@@ -1,5 +1,6 @@
 package com.example.kyler.hdviet.Fragment
 
+import android.view.View
 import com.example.kyler.hdviet.R
 
 /**
@@ -11,8 +12,8 @@ class SeriesFragment : BaseFragment() {
         return R.layout.fragment_series
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(view : View) {
+        super.initView(view)
 
     }
 
