@@ -10,23 +10,32 @@ import retrofit2.http.*
 /**
  * Created by kyler on 30/06/2017.
  */
-class RestApiManager(){
+class RestApiManager {
 
     companion object {
+        private var restAPI: RestApi? = null
+        private var restSSLAPI: RestSSLApi? = null
+
         fun createApiService(): RestApi {
-            val retrofit = Retrofit.Builder()
-                    .baseUrl(ConstantsURL.Base.URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-            return retrofit.create(RestApi::class.java)
+            if (restAPI == null) {
+                val retrofit = Retrofit.Builder()
+                        .baseUrl(ConstantsURL.Base.URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                restAPI = retrofit.create((RestApi::class.java))
+            }
+            return restAPI!!
         }
 
         fun createSSLApiService(): RestSSLApi {
-            val retrofit = Retrofit.Builder()
-                    .baseUrl(ConstantsURL.Base.URL_SSL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-            return retrofit.create(RestSSLApi::class.java)
+            if (restSSLAPI == null) {
+                val retrofit = Retrofit.Builder()
+                        .baseUrl(ConstantsURL.Base.URL_SSL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                restSSLAPI = retrofit.create((RestSSLApi::class.java))
+            }
+            return restSSLAPI!!
         }
     }
 
@@ -38,18 +47,22 @@ class RestApiManager(){
 
         @GET("api/v3/movie/filter")
         fun listMoviesByGenre(@HeaderMap headers: Map<String, String>,
-                        @QueryMap queries: Map<String, String>): Call<JsonObject>
+                              @QueryMap queries: Map<String, String>): Call<JsonObject>
 
     }
 
     interface RestSSLApi {
 
         @GET("user/login")
-        fun login_useSSL(@HeaderMap headers: Map<String, String>,
+        fun login(@HeaderMap headers: Map<String, String>,
                          @QueryMap queries: Map<String, String>): Call<JsonObject>
 
         @GET("category")
-        fun getCategory_useSSL(@HeaderMap headers: Map<String, String>,
+        fun getCategory(@HeaderMap headers: Map<String, String>,
+                               @QueryMap queries: Map<String, String>): Call<JsonObject>
+
+        @GET("movie")
+        fun getMovieDetail(@HeaderMap headers: Map<String, String>,
                                @QueryMap queries: Map<String, String>): Call<JsonObject>
 
     }

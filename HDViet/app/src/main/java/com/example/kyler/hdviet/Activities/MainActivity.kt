@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.view.Gravity
 import com.example.kyler.hdviet.Fragment.BaseFragment
-import com.example.kyler.hdviet.Fragment.SeriesFragment
+import com.example.kyler.hdviet.Fragment.Series.SeriesFragment
 import com.example.kyler.hdviet.Fragment.Movies.MoviesFragment
-import com.example.kyler.hdviet.Fragment.PopularsFragment
+import com.example.kyler.hdviet.Fragment.Populars.PopularsFragment
 import com.example.kyler.hdviet.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_content_main.*
@@ -25,8 +25,8 @@ class MainActivity : BaseActivity(){
         val mViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
         val listFragment = ArrayList<BaseFragment>()
         listFragment.add(PopularsFragment())
-        listFragment.add(SeriesFragment())
         listFragment.add(MoviesFragment())
+        listFragment.add(SeriesFragment())
         mViewPagerAdapter.setListFragment(listFragment)
         vPagerMain.adapter = mViewPagerAdapter
         vPagerMain.addOnPageChangeListener(object : OnPageChangeListener {

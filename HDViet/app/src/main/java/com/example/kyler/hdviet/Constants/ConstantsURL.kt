@@ -5,6 +5,9 @@ package com.example.kyler.hdviet.Constants
  */
 
 object ConstantsURL {
+
+    open val ID_DATA                        = "ID_DATA"
+
     object Base {
         open val URL                        = "http://rest.hdviet.com/"
         open val URL_SSL                    = "https://api-v2.hdviet.com/"
@@ -26,10 +29,10 @@ object ConstantsURL {
         open val SEARCH_MOVIE               = "api/v3/search"
     }
 
-    object Genre{
-        open val populars                   = 0
-        open val series                     = 1
-        open val movies                     = 2
+    enum class Genre(val key : String){
+        populars("0"),
+        series("1"),
+        movies("2");
     }
 
     object HeaderKeys{
@@ -37,43 +40,44 @@ object ConstantsURL {
     }
 
     object QueryKeys{
+        open val movieId                    = "movieid"
         open val genre                      = "genre"
         open val tag                        = "tag"
         open val page                       = "page"
         open val limit                      = "limit"
     }
 
-    object Tags{
-        open val moi_cap_nhat			    = "Mới cập nhật"
-        open val hot_trong_thang			= "Hot trong tháng"
-        open val hdviet_de_cu			    = "HDViệt đề cử"
-        open val hanh_dong			        = "Hành động"
-        open val kinh_di			        = "Kinh dị"
-        open val hai			            = "Hài"
-        open val chien_tranh			    = "Chiến tranh"
-        open val khoa_hoc_vien_tuong		= "Khoa học viễn tưởng"
-        open val hinh_su_toi_pham			= "Hình sự tội phạm"
-        open val vo_thuat			        = "Võ thuật"
-        open val tinh_cam			        = "Tình cảm"
-        open val hoat_hinh			        = "Hoạt hình"
-        open val anime			            = "Anime"
-        open val am_nhac			        = "Âm nhạc"
-        open val the_thao			        = "Thể thao"
-        open val tam_ly			            = "Tâm lý"
-        open val au_my			            = "Âu mỹ"
-        open val gia_dinh			        = "Gia đình"
-        open val chau_a			            = "Châu á"
-        open val hong_kong			        = "Hồng kông"
-        open val han_quoc			        = "Hàn quốc"
-        open val lich_su			        = "Lịch sử"
-        open val tai_lieu			        = "Tài liệu"
-        open val chieu_rap			        = "Phim chiếu rạp"
-        open val bi_an			            = "Phim bí ẩn"
-        open val co_trang			        = "Phim cổ trang"
-        open val lang_man			        = "Phim lãng mạn"
-        open val trinh_tham			        = "Phim trinh thám"
-        open val vien_tay			        = "Phim viễn tây"
-        open val sap_chieu			        = "Sắp chiếu"
-        open val than_thoai			        = "Thần thoại"
+    enum class Tags(val key : String){
+        moi_cap_nhat			    ("Mới cập nhật"),
+        hot_trong_thang			    ("Hot trong tháng"),
+        hdviet_de_cu			    ("HDViệt đề cử"),
+        hanh_dong			        ("Hành động"),
+        kinh_di			            ("Kinh dị"),
+        hai			                ("Hài"),
+        chien_tranh			        ("Chiến tranh"),
+        khoa_hoc_vien_tuong		    ("Khoa học viễn tưởng"),
+        hinh_su_toi_pham			("Hình sự tội phạm"),
+        vo_thuat			        ("Võ thuật"),
+        tinh_cam			        ("Tình cảm"),
+        hoat_hinh			        ("Hoạt hình"),
+        anime			            ("Anime"),
+        am_nhac			            ("Âm nhạc"),
+        the_thao			        ("Thể thao"),
+        tam_ly			            ("Tâm lý"),
+        au_my			            ("Âu mỹ"),
+        gia_dinh			        ("Gia đình"),
+        chau_a			            ("Châu á"),
+        hong_kong			        ("Hồng kông"),
+        han_quoc			        ("Hàn quốc"),
+        lich_su			            ("Lịch sử"),
+        tai_lieu			        ("Tài liệu"),
+        chieu_rap			        ("Phim chiếu rạp"),
+        bi_an			            ("Phim bí ẩn"),
+        co_trang			        ("Phim cổ trang"),
+        lang_man			        ("Phim lãng mạn"),
+        trinh_tham			        ("Phim trinh thám"),
+        vien_tay			        ("Phim viễn tây"),
+        sap_chieu			        ("Sắp chiếu"),
+        than_thoai			        ("Thần thoại")
     }
 }

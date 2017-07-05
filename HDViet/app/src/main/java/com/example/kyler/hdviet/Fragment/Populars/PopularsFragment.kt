@@ -1,19 +1,18 @@
-package com.example.kyler.hdviet.Fragment.Movies
+package com.example.kyler.hdviet.Fragment.Populars
 
 import com.example.kyler.hdviet.Constants.ConstantsURL
-import com.example.kyler.hdviet.Fragment.BaseMoviesFragment.IViewMovies
 import com.example.kyler.hdviet.Fragment.BaseMoviesFragment.BaseRecyclerViewFragment
 
 /**
  * Created by kyler on 09/06/2017.
  */
-class MoviesFragment : BaseRecyclerViewFragment(), IViewMovies {
+class PopularsFragment : BaseRecyclerViewFragment() {
     override fun getGenre(): ConstantsURL.Genre {
-        return ConstantsURL.Genre.movies
+        return ConstantsURL.Genre.populars
     }
 
     override fun toString(): String {
-        return "Movies"
+        return "Populars"
     }
 
 }

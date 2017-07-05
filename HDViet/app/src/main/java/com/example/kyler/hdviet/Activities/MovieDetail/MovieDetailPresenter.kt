@@ -1,0 +1,34 @@
+package com.example.kyler.hdviet.Activities.MovieDetail
+
+import android.content.Context
+import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Entities.MovieDetail
+
+/**
+ * Created by kyler on 05/07/2017.
+ */
+class MovieDetailPresenter(val context: Context) : IPresenterDetail {
+
+    var model: IModelDetail? = null
+    var view: IViewDetail? = null
+
+    init {
+        model = MovieDetailModel(context)
+        model?.attachPresenter(this)
+    }
+
+    override fun attachView(v: IViewDetail) {
+        this.view = view
+    }
+
+    override fun getDetailMovie(id: Int) {
+        val headers = HashMap<String, String>()
+        val queries = HashMap<String, String>()
+        queries.put(ConstantsURL.QueryKeys.movieId, id.toString())
+        model?.getMovieDetail(headers, queries)
+    }
+
+    override fun onDetailResponse(movieDetail: MovieDetail) {
+        view?.onDetailResponse(movieDetail)
+    }
+}

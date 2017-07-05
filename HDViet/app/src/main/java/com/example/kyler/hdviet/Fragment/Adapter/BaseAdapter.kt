@@ -12,14 +12,31 @@ import com.squareup.picasso.Picasso
 /**
  * Created by kyler on 03/07/2017.
  */
-class BaseAdapter(context: Context, listMovie: List<Movie>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BaseAdapter(context: Context, listMovie: MutableList<Movie>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var listMovie: List<Movie>? = null
+    constructor(context: Context ) : this(context, ArrayList<Movie>())
+
+    private var listMovie: MutableList<Movie>? = null
     private var context: Context? = null
+    private var onClicklistener : OnClickListener? = null
 
     init {
         this.listMovie = listMovie
         this.context = context
+    }
+
+    fun setListMovies(listMovie: MutableList<Movie>){
+        this.listMovie = listMovie
+        notifyDataSetChanged()
+    }
+
+    fun addListMovies(listMovie: List<Movie>){
+        this.listMovie?.addAll(listMovie)
+        notifyDataSetChanged()
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener){
+        this.onClicklistener = onClicklistener
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
@@ -30,6 +47,9 @@ class BaseAdapter(context: Context, listMovie: List<Movie>) : RecyclerView.Adapt
             val url = ConstantsURL.Base.URL_IMAGE_POSTER + movie!!.newPoster
             Picasso.with(context).load(url)
                     .fit().into(movieHolder.movieImg)
+            movieHolder.itemView.setOnClickListener {
+                onClicklistener?.onClickListener(movie.movieID!!)
+            }
         }
     }
 
@@ -42,5 +62,7 @@ class BaseAdapter(context: Context, listMovie: List<Movie>) : RecyclerView.Adapt
         return MoviewViewHolder(inflater.inflate(R.layout.movie_layout, parent, false))
     }
 
-
+    interface OnClickListener {
+        fun onClickListener(id : Int)
+    }
 }

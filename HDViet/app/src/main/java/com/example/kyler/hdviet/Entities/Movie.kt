@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Created by kyler on 03/07/2017.
  */
 
-open class Movie : BaseObject() {
+open class Movie {
     @SerializedName("MovieID")
     val movieID: Int? = null
     @SerializedName("MovieName")
@@ -16,7 +16,7 @@ open class Movie : BaseObject() {
     @SerializedName("KnownAs")
     val knownAs: String? = null
     @SerializedName("Language")
-    val language: Any? = null
+    val language: String? = null
     @SerializedName("Creator")
     val creator: String? = null
     @SerializedName("Director")
@@ -28,7 +28,7 @@ open class Movie : BaseObject() {
     @SerializedName("Company")
     val company: String? = null
     @SerializedName("MPAA")
-    val mPAA: Any? = null
+    val mPAA: String? = null
     @SerializedName("PlotVI")
     val plotVI: String? = null
     @SerializedName("PlotEN")
@@ -72,7 +72,7 @@ open class Movie : BaseObject() {
     @SerializedName("tagUuid")
     val tagUuid: String? = null
     @SerializedName("Parent")
-    val parent: Any? = null
+    val parent: String? = null
     @SerializedName("Season")
     val season: Int? = null
     @SerializedName("Episode")
