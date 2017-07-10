@@ -18,7 +18,7 @@ class MovieDetailPresenter(val context: Context) : IPresenterDetail {
     }
 
     override fun attachView(v: IViewDetail) {
-        this.view = view
+        this.view = v
     }
 
     override fun getDetailMovie(id: Int) {

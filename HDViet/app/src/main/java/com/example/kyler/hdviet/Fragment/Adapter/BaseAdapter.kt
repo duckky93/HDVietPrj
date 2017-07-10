@@ -36,7 +36,7 @@ class BaseAdapter(context: Context, listMovie: MutableList<Movie>?) : RecyclerVi
     }
 
     fun setOnClickListener(onClickListener: OnClickListener){
-        this.onClicklistener = onClicklistener
+        this.onClicklistener = onClickListener
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {

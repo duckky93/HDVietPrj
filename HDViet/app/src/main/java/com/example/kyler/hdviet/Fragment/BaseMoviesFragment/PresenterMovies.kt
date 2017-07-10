@@ -18,7 +18,7 @@ class PresenterMovies(val context: Context) : IPresenterMovies {
     }
 
     override fun attachView(v: IViewMovies) {
-        this.view = view
+        this.view = v
     }
 
     override fun onMovieResponse(listMovie: MutableList<Movie>) {

@@ -17,8 +17,6 @@ class MovieDetail {
     val wrapLink: String? = null
     @SerializedName("Trailer")
     val trailer: String? = null
-    @SerializedName("Tags")
-    val tags: Boolean? = null
     @SerializedName("Category")
     val category: List<Category>? = null
     @SerializedName("Poster")

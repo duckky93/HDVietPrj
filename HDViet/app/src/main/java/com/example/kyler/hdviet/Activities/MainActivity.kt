@@ -25,8 +25,8 @@ class MainActivity : BaseActivity(){
         val mViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
         val listFragment = ArrayList<BaseFragment>()
         listFragment.add(PopularsFragment())
-        listFragment.add(MoviesFragment())
         listFragment.add(SeriesFragment())
+        listFragment.add(MoviesFragment())
         mViewPagerAdapter.setListFragment(listFragment)
         vPagerMain.adapter = mViewPagerAdapter
         vPagerMain.addOnPageChangeListener(object : OnPageChangeListener {

@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MovieDetail.MovieDetailActivity"/>
+        <activity android:name=".Activities.MovieDetail.MovieDetailActivity"
+            android:configChanges="orientation|screenSize|locale"/>
     </application>
 
 </manifest>
