@@ -1,12 +1,13 @@
 package com.example.kyler.hdviet.Entities
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 /**
  * Created by kyler on 05/07/2017.
  */
 
-class MovieRelative {
+class MovieRelative : Serializable {
 
     @SerializedName("MovieID")
     val movieID: String? = null

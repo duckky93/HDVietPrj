@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">HDViet</string>
+
+    <string name="movie_IMDB">IMDB: %s</string>
+    <string name="movie_country">Quốc gia: %s</string>
+    <string name="movie_release">Phát hành: %s</string>
+    <string name="movie_director">Đạo diễn: %s</string>
+    <string name="movie_creator">Nhà sản xuất: %s</string>
+    <string name="movie_cast">Diễn viên: %s</string>
+
+
+
 </resources>

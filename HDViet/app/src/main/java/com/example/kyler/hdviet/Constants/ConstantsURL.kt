@@ -7,6 +7,7 @@ package com.example.kyler.hdviet.Constants
 object ConstantsURL {
 
     open val ID_DATA                        = "ID_DATA"
+    open val MOVIE_DETAIL_DATA              = "MOVIE_DETAIL_DATA"
 
     object Base {
         open val URL                        = "http://rest.hdviet.com/"
