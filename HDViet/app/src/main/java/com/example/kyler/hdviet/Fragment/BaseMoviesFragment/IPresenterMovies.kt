@@ -1,6 +1,6 @@
 package com.example.kyler.hdviet.Fragment.BaseMoviesFragment
 
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.ConstantsApi
 import com.example.kyler.hdviet.Entities.Movie
 import com.example.kyler.hdviet.IBasePresenter
 
@@ -9,7 +9,7 @@ import com.example.kyler.hdviet.IBasePresenter
  */
 interface IPresenterMovies : IBasePresenter<IViewMovies>{
 
-    fun getMovies(genre : ConstantsURL.Genre, page : Int)
+    fun getMovies(genre : ConstantsApi.Genre, page : Int)
 
     fun onMovieResponse(listMovie : MutableList<Movie>)
 

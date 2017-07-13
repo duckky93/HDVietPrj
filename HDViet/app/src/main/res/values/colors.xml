@@ -5,4 +5,6 @@
     <color name="colorAccent">#e7e7e7</color>
 
     <color name="color_line">#2e0e0e</color>
+    <color name="imdb_background">#f7c80d</color>
+    <color name="white">#fff</color>
 </resources>

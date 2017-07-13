@@ -1,16 +1,61 @@
 package com.example.kyler.hdviet.Constants;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Scanner;
+
 /**
  * Created by kyler on 06/07/2017.
  */
 
 public class tesst {
-//
-//    public static void main(String[] args) {
-//        init();
-//    }
 
-    private static void init(){
+    public static void main(String[] args) {
+//        initCounting();
+//        initHTML();
+    }
+
+    private static void initHTML(){
+        String content = null;
+        try {
+            URL url = new URL("http://vietlott.vn/vi/choi/mega-6-45/thong-ke/");
+            InputStream is = url.openStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            String line;
+            while ( (line = br.readLine()) != null)
+                System.out.println(line);
+
+            br.close();
+            is.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(content);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static void initCounting(){
         long startTime = System.nanoTime();
         int[] data = new int[]{361, 167, 102, 381, 348, 305, 93, 78, 359, 196, 406, 162, 498, 73, 306, 445, 326, 66, 398, 53};
         int[] arrangedData = countingSort(data);

@@ -1,6 +1,6 @@
 package com.example.kyler.hdviet.RestApi
 
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.ConstantsApi
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -19,7 +19,7 @@ class RestApiManager {
         fun createApiService(): RestApi {
             if (restAPI == null) {
                 val retrofit = Retrofit.Builder()
-                        .baseUrl(ConstantsURL.Base.URL)
+                        .baseUrl(ConstantsApi.Base.URL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
                 restAPI = retrofit.create((RestApi::class.java))
@@ -30,7 +30,7 @@ class RestApiManager {
         fun createSSLApiService(): RestSSLApi {
             if (restSSLAPI == null) {
                 val retrofit = Retrofit.Builder()
-                        .baseUrl(ConstantsURL.Base.URL_SSL)
+                        .baseUrl(ConstantsApi.Base.URL_SSL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
                 restSSLAPI = retrofit.create((RestSSLApi::class.java))

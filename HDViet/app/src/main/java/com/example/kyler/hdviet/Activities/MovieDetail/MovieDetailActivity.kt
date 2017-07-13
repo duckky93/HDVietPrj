@@ -4,30 +4,27 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.ViewPager
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.example.kyler.hdviet.Activities.BaseActivity
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.Constants
 import com.example.kyler.hdviet.Entities.MovieDetail
 import com.example.kyler.hdviet.Fragment.BaseFragment
 import com.example.kyler.hdviet.Fragment.Detail.About.AboutFragment
-import com.example.kyler.hdviet.Fragment.Movies.MoviesFragment
-import com.example.kyler.hdviet.Fragment.Populars.PopularsFragment
-import com.example.kyler.hdviet.Fragment.Series.SeriesFragment
+import com.example.kyler.hdviet.Fragment.Detail.About.RelativeFragment
 import com.example.kyler.hdviet.R
 import com.google.android.youtube.player.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import com.google.android.youtube.player.YouTubeThumbnailView
 import com.google.android.youtube.player.YouTubeThumbnailLoader
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
-import kotlinx.android.synthetic.main.layout_content_main.*
 
 
 /**
  * Created by kyler on 05/07/2017.
  */
-class MovieDetailActivity : BaseActivity(), IViewDetail {
+class MovieDetailActivity : BaseActivity(), IViewDetail{
 
     override fun getResLayout(): Int {
         return R.layout.activity_movie_detail
@@ -36,49 +33,69 @@ class MovieDetailActivity : BaseActivity(), IViewDetail {
     override fun initView() {
         val presenter: MovieDetailPresenter = MovieDetailPresenter(this)
         presenter.attachView(this)
-        presenter.getDetailMovie(intent.getIntExtra(ConstantsURL.ID_DATA, 0))
+        presenter.getDetailMovie(intent.getIntExtra(Constants.ID_DATA, 0))
     }
 
     override fun onDetailResponse(movieDetail: MovieDetail) {
         val youtubeVideoKey = movieDetail.trailer?.split("watch?v=")?.get(1)
-        youtubethumbnailview.initialize("AIzaSyChhY1j6dtI6p0MLBL2vAA3hs6MBdOQG5U", object : YouTubeThumbnailView.OnInitializedListener {
+        youtubethumbnailview.initialize(Constants.YOUTUBE_API, object : YouTubeThumbnailView.OnInitializedListener {
             override fun onInitializationSuccess(p0: YouTubeThumbnailView?, p1: YouTubeThumbnailLoader?) {
                 if (youtubeVideoKey != null) {
                     val youTubeThumbnailLoader = p1
                     p1?.setOnThumbnailLoadedListener(object : ThumbnailLoadedListener(youtubeVideoKey) {})
                     youTubeThumbnailLoader?.setVideo(youtubeVideoKey)
+                } else {
+                    onErrorLoadingTrailer()
                 }
             }
 
             override fun onInitializationFailure(p0: YouTubeThumbnailView?, p1: YouTubeInitializationResult?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                onErrorLoadingTrailer()
             }
         })
         setupViewPager(movieDetail)
     }
 
-    private fun setupViewPager(movieDetail: MovieDetail){
+    fun onErrorLoadingTrailer() {
+        youtubethumbnailview.visibility = View.VISIBLE
+        button.visibility = View.GONE
+    }
+
+    private fun setupViewPager(movieDetail: MovieDetail) {
         val mViewPagerAdapter = MovieDetailViewPagerAdapter(supportFragmentManager)
         val listFragment = ArrayList<BaseFragment>()
-        val aboutFragment = AboutFragment(object : AboutFragment.OnLayoutChanged{
-            override fun onLayoutChanged(layoutParams: ViewGroup.LayoutParams) {
-                val layoutViewPager = viewPagerDetail.layoutParams
-                layoutViewPager.height = layoutViewPager.height + layoutParams.height
-                viewPagerDetail.layoutParams = layoutViewPager
-            }
-        })
+        val aboutFragment = AboutFragment()
+        val relativeFragment = RelativeFragment()
         val movieDetailBundle = Bundle()
-        movieDetailBundle.putSerializable(ConstantsURL.MOVIE_DETAIL_DATA, movieDetail)
+        movieDetailBundle.putSerializable(Constants.MOVIE_DETAIL_DATA, movieDetail)
         aboutFragment.arguments = movieDetailBundle
+        relativeFragment.arguments = movieDetailBundle
         listFragment.add(aboutFragment)
+        listFragment.add(relativeFragment)
         mViewPagerAdapter.setListFragment(listFragment)
         viewPagerDetail.adapter = mViewPagerAdapter
+        tabDetail.setupWithViewPager(viewPagerDetail)
+        viewPagerDetail.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                runOnUiThread {
+                    viewPagerDetail.invalidate()
+                    viewPagerDetail.requestLayout()
+                }
+            }
+        })
     }
 
     private open inner class ThumbnailLoadedListener(val youtubeVideoKey: String) : YouTubeThumbnailLoader.OnThumbnailLoadedListener {
         override fun onThumbnailError(arg0: YouTubeThumbnailView, arg1: YouTubeThumbnailLoader.ErrorReason) {
-            youtubethumbnailview.visibility = View.VISIBLE
-            button.visibility = View.GONE
+            onErrorLoadingTrailer()
             Toast.makeText(applicationContext,
                     "ThumbnailLoadedListener.onThumbnailError()",
                     Toast.LENGTH_LONG).show()
@@ -89,7 +106,7 @@ class MovieDetailActivity : BaseActivity(), IViewDetail {
             button.visibility = View.VISIBLE
             button.setOnClickListener {
                 val youTubePlayerFragment = supportFragmentManager.findFragmentById(R.id.youtube_player) as YouTubePlayerSupportFragment
-                youTubePlayerFragment.initialize("AIzaSyChhY1j6dtI6p0MLBL2vAA3hs6MBdOQG5U", object : YouTubePlayer.OnInitializedListener {
+                youTubePlayerFragment.initialize(Constants.YOUTUBE_API, object : YouTubePlayer.OnInitializedListener {
                     override fun onInitializationFailure(p0: YouTubePlayer.Provider?, p1: YouTubeInitializationResult?) {
                         Toast.makeText(baseContext, "Fail", Toast.LENGTH_SHORT).show()
                     }

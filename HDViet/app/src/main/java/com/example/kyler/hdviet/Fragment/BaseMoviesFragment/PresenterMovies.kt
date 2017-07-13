@@ -1,7 +1,7 @@
 package com.example.kyler.hdviet.Fragment.BaseMoviesFragment
 
 import android.content.Context
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.ConstantsApi
 import com.example.kyler.hdviet.Entities.Movie
 
 /**
@@ -25,14 +25,14 @@ class PresenterMovies(val context: Context) : IPresenterMovies {
         view?.onMovieResponse(listMovie)
     }
 
-    override fun getMovies(genre : ConstantsURL.Genre, page : Int) {
+    override fun getMovies(genre : ConstantsApi.Genre, page : Int) {
         val headers = HashMap<String, String>()
         val queries = HashMap<String, String>()
-        headers.put(ConstantsURL.HeaderKeys.accessToken,"d2f08612c4164ec39e418020d5a5aa2e")
-        queries.put(ConstantsURL.QueryKeys.genre, genre.key)
-        queries.put(ConstantsURL.QueryKeys.tag, ConstantsURL.Tags.moi_cap_nhat.key)
-        queries.put(ConstantsURL.QueryKeys.page, page.toString())
-        queries.put(ConstantsURL.QueryKeys.limit, 30.toString())
+        headers.put(ConstantsApi.HeaderKeys.accessToken,"d2f08612c4164ec39e418020d5a5aa2e")
+        queries.put(ConstantsApi.QueryKeys.genre, genre.key)
+        queries.put(ConstantsApi.QueryKeys.tag, ConstantsApi.Tags.moi_cap_nhat.key)
+        queries.put(ConstantsApi.QueryKeys.page, page.toString())
+        queries.put(ConstantsApi.QueryKeys.limit, 30.toString())
         model?.getMovies(headers, queries)
     }
 }

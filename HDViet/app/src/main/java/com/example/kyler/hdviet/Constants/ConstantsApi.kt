@@ -4,10 +4,7 @@ package com.example.kyler.hdviet.Constants
  * Created by kyler on 29/06/2017.
  */
 
-object ConstantsURL {
-
-    open val ID_DATA                        = "ID_DATA"
-    open val MOVIE_DETAIL_DATA              = "MOVIE_DETAIL_DATA"
+object ConstantsApi {
 
     object Base {
         open val URL                        = "http://rest.hdviet.com/"

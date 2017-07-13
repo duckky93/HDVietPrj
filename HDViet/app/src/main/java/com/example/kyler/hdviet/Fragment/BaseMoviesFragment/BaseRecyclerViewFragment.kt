@@ -7,7 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import com.example.kyler.hdviet.Activities.MovieDetail.MovieDetailActivity
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.Constants
+import com.example.kyler.hdviet.Constants.ConstantsApi
 import com.example.kyler.hdviet.Entities.Movie
 import com.example.kyler.hdviet.Fragment.Adapter.BaseAdapter
 import com.example.kyler.hdviet.Fragment.BaseFragment
@@ -24,7 +25,7 @@ abstract class BaseRecyclerViewFragment : BaseFragment(), IViewMovies {
     var presenter: PresenterMovies? = null
     var adapter: BaseAdapter? = null
 
-    abstract fun getGenre(): ConstantsURL.Genre
+    abstract fun getGenre(): ConstantsApi.Genre
 
     fun onLoadingOnPage(page: Int) {
         presenter?.getMovies(getGenre(), page!!)
@@ -70,7 +71,7 @@ abstract class BaseRecyclerViewFragment : BaseFragment(), IViewMovies {
         adapter?.setOnClickListener(object : BaseAdapter.OnClickListener {
             override fun onClickListener(id: Int) {
                 val intent = Intent(activity, MovieDetailActivity::class.java)
-                intent.putExtra(ConstantsURL.ID_DATA, id)
+                intent.putExtra(Constants.ID_DATA, id)
                 activity.startActivity(intent)
             }
         })

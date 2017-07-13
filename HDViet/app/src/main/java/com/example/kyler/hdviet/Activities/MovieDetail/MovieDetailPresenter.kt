@@ -1,7 +1,7 @@
 package com.example.kyler.hdviet.Activities.MovieDetail
 
 import android.content.Context
-import com.example.kyler.hdviet.Constants.ConstantsURL
+import com.example.kyler.hdviet.Constants.ConstantsApi
 import com.example.kyler.hdviet.Entities.MovieDetail
 
 /**
@@ -24,7 +24,7 @@ class MovieDetailPresenter(val context: Context) : IPresenterDetail {
     override fun getDetailMovie(id: Int) {
         val headers = HashMap<String, String>()
         val queries = HashMap<String, String>()
-        queries.put(ConstantsURL.QueryKeys.movieId, id.toString())
+        queries.put(ConstantsApi.QueryKeys.movieId, id.toString())
         model?.getMovieDetail(headers, queries)
     }
 

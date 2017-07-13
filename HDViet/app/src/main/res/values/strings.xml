@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">HDViet</string>
 
+    <string name="movie_tag">Movies</string>
+    <string name="popular_tag">Populars</string>
+    <string name="series_tag">Series</string>
+    <string name="about_tag">About</string>
+    <string name="relative_tag">Relative</string>
+    <string name="review_tag">Review</string>
+    <string name="watch_tag">Watch</string>
+
     <string name="movie_IMDB">IMDB: %s</string>
     <string name="movie_country">Quốc gia: %s</string>
     <string name="movie_release">Phát hành: %s</string>

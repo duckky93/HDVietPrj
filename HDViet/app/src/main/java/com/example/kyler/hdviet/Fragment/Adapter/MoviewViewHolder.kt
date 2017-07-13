@@ -13,8 +13,10 @@ import com.example.kyler.hdviet.R
 class MoviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     var movieImg : ImageView ?= null
     var movieName : TextView ?= null
+    var imdbPoint : TextView ?= null
     init {
         movieImg = itemView.findViewById(R.id.movieImage) as ImageView
         movieName = itemView.findViewById(R.id.movieName) as TextView
+        imdbPoint = itemView.findViewById(R.id.imdbPoint) as TextView
     }
 }
